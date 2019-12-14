@@ -5,6 +5,9 @@ const Producto = require('./producto');
 let Schema = mongoose.Schema;
 
 let lendingSchema = new Schema({
+    nombre: {
+        type: String,
+    },
     prestamo: {
         type: Date,
         default: Date.now
@@ -13,6 +16,7 @@ let lendingSchema = new Schema({
         type: Date
 
     },
+
     producto: {
         type: Schema.Types.ObjectId,
         ref: 'Producto',

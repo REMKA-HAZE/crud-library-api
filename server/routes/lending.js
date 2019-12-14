@@ -6,7 +6,7 @@ const app = express();
 app.post('/lending', (req, res) => {
     let body = req.body;
     let lending = new Lending({
-
+        nombre: body.nombre,
         usuario: body.usuario,
         producto: body.producto,
         prestamo: body.prestamo,
@@ -29,7 +29,7 @@ app.post('/lending', (req, res) => {
 
 app.put('/lending/:id', (req, res) => {
     let id = req.params.id;
-    let body = _.pick(req.body, ['prestamo', 'entrega', 'disponible', 'usuario', 'producto']);
+    let body = _.pick(req.body, ['nombre', 'prestamo', 'entrega', 'disponible', 'usuario', 'producto']);
     Producto.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, lenDB) => {
         if (err) {
             return res.status(400).json({
