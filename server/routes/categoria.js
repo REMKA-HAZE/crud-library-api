@@ -29,7 +29,7 @@ app.post('/categoria', (req, res) => {
 
 app.put('/categoria/:id', (req, res) => {
     let id = req.params.id;
-    let body = _.pick(req.body, ['nombre', 'producto', 'usuario', 'sta', 'entrega']);
+    let body = _.pick(req.body, ['producto', 'usuario', 'sta', 'entrega', 'disponible']);
     Categoria.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, catDB) => {
         if (err) {
             return res.status(400).json({
@@ -47,6 +47,23 @@ app.put('/categoria/:id', (req, res) => {
 
 app.get('/categoria', (req, res) => {
     Categoria.find({ disponible: true })
+        .exec((err, categorias) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
+            return res.status(200).json({
+                ok: true,
+                count: categorias.length,
+                categorias
+            });
+        });
+});
+app.get('/categoria/:id', (req, res) => {
+    let id = req.params.id;
+    Categoria.find({ disponible: true, _id: id })
         .exec((err, categorias) => {
             if (err) {
                 return res.status(400).json({
