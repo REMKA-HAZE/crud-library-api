@@ -21,7 +21,7 @@ let categoriaSchema = new Schema({
         required: [true, 'Por favor ingresa el nombre del usuario']
     },
     sta: {
-        type: String,
+        type: Date,
         default: Date.now
     },
     entrega: {
