@@ -5,9 +5,12 @@ const Producto = require('./producto');
 let Schema = mongoose.Schema;
 
 let lendingSchema = new Schema({
-    nombre: {
-        type: String,
-        unique: true,
+    prestamo: {
+        type: Date,
+        default: Date.now
+    },
+    entrega: {
+        type: Date
 
     },
     producto: {
