@@ -6,7 +6,7 @@ const app = express();
 app.post('/categoria', (req, res) => {
     let body = req.body;
     let categoria = new Categoria({
-        nombre: body.nombre,
+
         producto: body.producto,
         usuario: body.usuario,
         sta: body.sta,
@@ -46,7 +46,7 @@ app.put('/categoria/:id', (req, res) => {
 });
 
 app.get('/categoria', (req, res) => {
-    Categoria.find({ sta: true })
+    Categoria.find({ disponible: true })
         .exec((err, categorias) => {
             if (err) {
                 return res.status(400).json({

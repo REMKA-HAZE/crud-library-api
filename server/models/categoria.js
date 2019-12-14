@@ -5,10 +5,9 @@ const Usuario = require('./usuario');
 let Schema = mongoose.Schema;
 
 let categoriaSchema = new Schema({
-    nombre: {
-        type: String,
-        unique: true,
-
+    disponible: {
+        type: Boolean,
+        default: true
     },
     producto: {
         type: Schema.Types.ObjectId,
