@@ -8,7 +8,12 @@ let categoriaSchema = new Schema({
     nombre: {
         type: String,
         unique: true,
-        required: [true, 'Por favor ingresa el nombre de la categoria']
+
+    },
+    producto: {
+        type: Schema.Types.ObjectId,
+        ref: 'Producto',
+        required: [true, 'Por favor ingresa el nombre del producto']
     },
     usuario: {
         type: Schema.Types.ObjectId,
@@ -16,8 +21,12 @@ let categoriaSchema = new Schema({
         required: [true, 'Por favor ingresa el nombre del usuario']
     },
     sta: {
-        type: Boolean,
-        default: true
+        type: String,
+        default: Date.now
+    },
+    entrega: {
+        type: Date
+
     }
 });
 

@@ -7,8 +7,10 @@ app.post('/categoria', (req, res) => {
     let body = req.body;
     let categoria = new Categoria({
         nombre: body.nombre,
+        producto: body.producto,
         usuario: body.usuario,
-        sta: body.sta
+        sta: body.sta,
+        entrega: body.entrega
     });
 
     categoria.save((err, catDB) => {
@@ -27,7 +29,7 @@ app.post('/categoria', (req, res) => {
 
 app.put('/categoria/:id', (req, res) => {
     let id = req.params.id;
-    let body = _.pick(req.body, ['nombre', 'usuario', 'sta']);
+    let body = _.pick(req.body, ['nombre', 'producto', 'usuario', 'sta', 'entrega']);
     Categoria.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, catDB) => {
         if (err) {
             return res.status(400).json({
