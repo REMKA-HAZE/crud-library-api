@@ -8,17 +8,17 @@ let Schema = mongoose.Schema;
 let productoSchema = new Schema({
     nombre: {
         type: String,
-        unique: true,
+        //  unique: true,
         required: [true, 'Por favor ingresa el nombre del libro']
     },
     editorial: {
         type: String,
-        unique: true,
+        //  unique: true,
         required: [true, 'Por favor ingresa el nombre del editorial']
     },
     autor: {
         type: String,
-        unique: true,
+        //  unique: true,
         required: [true, 'Por favor ingresa el nombre del autor']
     },
     precioUni: {
