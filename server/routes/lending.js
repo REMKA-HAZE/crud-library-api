@@ -30,7 +30,7 @@ app.post('/lending', (req, res) => {
 app.put('/lending/:id', (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'prestamo', 'entrega', 'disponible', 'usuario', 'producto']);
-    Producto.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, lenDB) => {
+    Lending.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, lenDB) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
