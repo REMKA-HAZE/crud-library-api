@@ -8,6 +8,9 @@ let lendingSchema = new Schema({
     nombre: {
         type: String,
     },
+    nbook: {
+        type: String,
+    },
     prestamo: {
         type: Date,
         default: Date.now
